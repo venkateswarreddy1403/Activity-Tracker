@@ -1,0 +1,21 @@
+<nav class="top-nav glass-card">
+  <div class="logo">
+    <div class="logo-icon"></div>
+    <h1>Activity Tracker</h1>
+  </div>
+  
+  <div class="nav-tabs">
+    <button 
+      class="tab-btn" 
+      [class.active]="currentView() === 'daily'"
+      (click)="setView('daily')">
+      Daily View
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="currentView() === 'weekly'"
+      (click)="setView('weekly')">
+      Weekly View
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,19 @@
+<div class="toast-container" *ngIf="toasts().length > 0">
+  @for (toast of toasts(); track toast.id) {
+    <div class="toast glass-card" [ngClass]="['type-' + toast.type]">
+      <div class="toast-icon">
+        @if (toast.type === 'success') {
+          ✅
+        } @else if (toast.type === 'motivation') {
+          🚀
+        } @else {
+          ℹ️
+        }
+      </div>
+      <div class="toast-content">
+        {{ toast.message }}
+      </div>
+      <button class="toast-close" (click)="remove(toast.id)">&times;</button>
+    </div>
+  }
+</div>

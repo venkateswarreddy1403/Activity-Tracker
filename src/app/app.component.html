@@ -1,0 +1,15 @@
+<div class="app-container">
+  <app-nav 
+    [currentView]="activeView()" 
+    (viewChange)="activeView.set($event)">
+  </app-nav>
+
+  <main class="main-content">
+    @if (activeView() === 'daily') {
+      <app-daily-view class="animate-enter"></app-daily-view>
+    } @else {
+      <app-weekly-view class="animate-enter"></app-weekly-view>
+    }
+  </main>
+</div>
+<app-toast></app-toast>

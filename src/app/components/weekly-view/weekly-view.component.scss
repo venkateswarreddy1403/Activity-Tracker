@@ -1,0 +1,128 @@
+.weekly-view-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    
+    &.purple {
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent-primary);
+    }
+    
+    &.green {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-success);
+    }
+    
+    &.blue {
+      background: rgba(59, 130, 246, 0.15);
+      color: #3b82f6;
+    }
+  }
+  
+  .stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    
+    &.text-accent {
+      color: var(--accent-primary);
+    }
+  }
+}
+
+.chart-header {
+  margin-bottom: 2rem;
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 250px;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.bar-wrapper {
+  height: 200px;
+  width: 32px;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  
+  @media (max-width: 600px) {
+    width: 20px;
+  }
+}
+
+.bar-fill {
+  width: 100%;
+  background: linear-gradient(to top, var(--accent-hover), var(--accent-primary));
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+  transition: height 1s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 4px;
+}
+
+.day-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

@@ -1,0 +1,49 @@
+<div class="list-container">
+  <div class="list-header">
+    <div class="header-titles">
+      <h2>Today's Log</h2>
+      <p>Your activities for today</p>
+    </div>
+    <div class="total-badge glass-card">
+      <span class="label">Total</span>
+      <span class="value">{{ formatDuration(totalDuration()) }}</span>
+    </div>
+  </div>
+
+  @if (todayActivities().length === 0) {
+    <div class="empty-state glass-card">
+      <div class="empty-icon">📝</div>
+      <p>No activities logged yet today.<br>Start by adding one!</p>
+    </div>
+  } @else {
+    <div class="activity-cards">
+      @for (activity of todayActivities(); track activity.id) {
+        <div class="activity-card glass-card">
+          <div class="card-indicator" [style.backgroundColor]="fetchCategoryColor(activity.category)"></div>
+          
+          <div class="card-content">
+            <div class="card-main">
+              <h3>{{ activity.name }}</h3>
+              <div class="card-meta">
+                <span class="category-pill" [style.color]="fetchCategoryColor(activity.category)">
+                  {{ activity.category || 'Other' }}
+                </span>
+                <span class="duration-pill">
+                  ⏱️ {{ formatDuration(activity.durationMinutes) }}
+                </span>
+              </div>
+            </div>
+            
+            @if (activity.notes) {
+              <p class="card-notes">{{ activity.notes }}</p>
+            }
+          </div>
+          
+          <button class="delete-btn" (click)="deleteActivity(activity.id)" title="Remove">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v6M14 11v6"/></svg>
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>
